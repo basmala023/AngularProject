@@ -1,0 +1,45 @@
+<section class="contact mt-5">
+    <div class="container text-center">
+        <div class="content">
+            <h1>CONTACT ME</h1>
+            <div class="custom">
+             <div class="line"></div>
+             <div class="icon">
+            <i class="bi bi-star-fill"></i>
+            </div>
+            <div class="line"></div>
+            </div>
+            
+         </div>
+         <div class="row">
+            <div class="col">
+                <form (ngSubmit)="submit(contactForm)" [formGroup]="contactForm">
+                    <input type="text" class="form-control mb-2 w-75  mx-auto" formControlName="name" placeholder="Name">
+                    <div *ngIf="contactForm.get('name')?.errors && contactForm.get('name')?.touched" class="alert alert-danger w-75  mx-auto" role="alert">
+                       <p *ngIf="contactForm.get('name')?.getError('required')">Please enter your name. </p>
+                      </div>
+                     
+                     
+                    <input type="email" class="form-control mb-2 w-75  mx-auto" formControlName="email" placeholder="Email">
+                    <div *ngIf="contactForm.get('email')?.errors && contactForm.get('email')?.touched" class="alert alert-danger w-75  mx-auto" role="alert">
+                        <p *ngIf="contactForm.get('email')?.getError('required')">Please enter your email address. </p>
+                        <p *ngIf="contactForm.get('email')?.getError('email')">Please enter a valid email . </p>
+                       </div>
+                    <input type="tel" class="form-control mb-2 w-75  mx-auto" formControlName="phone" placeholder="Phone Number">
+                    <div *ngIf="contactForm.get('phone')?.errors && contactForm.get('phone')?.touched" class="alert alert-danger w-75  mx-auto" role="alert">
+                        <p *ngIf="contactForm.get('phone')?.getError('required')">Please enter your phone number. </p>
+                        <p *ngIf="contactForm.get('phone')?.getError('pattern')">Please enter a valid phone . </p>
+                       </div>
+                    <textarea name="message" formControlName="message" id="message"  class="form-control w-75 mx-auto" placeholder="Message"></textarea>
+                    <div *ngIf="contactForm.get('message')?.errors && contactForm.get('message')?.touched" class="alert alert-danger w-75  mx-auto" role="alert">
+                        <p *ngIf="contactForm.get('message')?.getError('required')">Please enter your message. </p>
+                        <p *ngIf="contactForm.get('message')?.getError('minlength')">minlength is 10 charchter . </p>
+                       </div>
+                    <button class="btn btn-success mt-2 w-75">Send</button>
+
+                </form>
+            </div>
+         </div>
+    </div>
+
+</section>
